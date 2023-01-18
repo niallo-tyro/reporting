@@ -1,0 +1,1224 @@
+version: 2
+
+sources:
+  - name: assessment
+    tables:
+      - name: assessment
+        columns:
+          - name: id
+          - name: tenant
+          - name: academic_namespace_id
+          - name: name
+          - name: description
+          - name: assessment_type
+          - name: start_date
+          - name: end_date
+          - name: grade_type
+          - name: passfailthreshold
+          - name: capturetarget
+          - name: comment_type
+          - name: comment_bank_id
+          - name: captureprincipalcomment
+          - name: captureyearheadcomment
+          - name: capturetutorcomment
+          - name: capturehousemastercomment
+          - name: publish
+          - name: publishlearner
+          - name: updating_user
+          - name: sys_period
+          - name: years
+
+      - name: assessment_comment
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_id
+          - name: student_party_id
+          - name: comment
+          - name: comment_bank_comment_id
+          - name: commenter_user_type
+          - name: updating_user
+          - name: sys_period
+
+      - name: assessment_extra_field
+        columns:
+          - name: id
+          - name: tenant
+          - name: name
+          - name: assessment_id
+          - name: extra_field_type
+          - name: grade_set_id
+          - name: comment_bank_id
+          - name: select_options
+          - name: updating_user
+          - name: sys_period
+
+      - name: assessment_grade_set
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_id
+          - name: grade_set_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: assessment_result
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_id
+          - name: student_party_id
+          - name: result
+          - name: target_result
+          - name: grade_set_grade_id
+          - name: target_grade_set_grade_id
+          - name: comment_bank_comment_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: assessment_subject_group
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_id
+          - name: subject_group_party_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: assessment_subject_group_student
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_subject_group_id
+          - name: student_party_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: comment_bank
+        columns:
+          - name: id
+          - name: tenant
+          - name: name
+          - name: description
+          - name: active
+          - name: updating_user
+          - name: sys_period
+
+      - name: comment_bank_comment
+        columns:
+          - name: id
+          - name: tenant
+          - name: comment_bank_id
+          - name: comment
+          - name: active
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: extra_field_result
+        columns:
+          - name: id
+          - name: tenant
+          - name: assessment_result_id
+          - name: assessment_extra_field_id
+          - name: result
+          - name: grade_set_grade_id
+          - name: comment_bank_comment_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: grade_set
+        columns:
+          - name: id
+          - name: tenant
+          - name: name_text_id
+          - name: description_text_id
+          - name: passfailthreshold
+          - name: active
+          - name: customgradeset
+          - name: iscba
+          - name: years
+          - name: updating_user
+          - name: sys_period
+          - name: region
+
+      - name: grade_set_grade
+        columns:
+          - name: id
+          - name: tenant
+          - name: grade_set_id
+          - name: name_text_id
+          - name: start
+          - name: end
+          - name: active
+          - name: updating_user
+          - name: sys_period
+          - name: study_levels
+          - name: pass_fail_threshold
+
+  - name: attendance
+    tables:
+      - name: attendance_code
+        columns:
+          - name: id
+          - name: tenant
+          - name: unique_name
+          - name: name_text_id
+          - name: code
+          - name: active
+          - name: visible_for_teacher
+          - name: visible_for_contact
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: day_attendance
+        columns:
+          - name: id
+          - name: tenant
+          - name: unique_name
+          - name: name_text_id
+          - name: time
+          - name: active
+          - name: updating_user
+          - name: sys_period
+
+      - name: event_attendance
+        columns:
+          - name: id
+          - name: tenant
+          - name: attendance_code_id
+          - name: person_party_id
+          - name: event_id
+          - name: date
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_day_attendance
+        columns:
+          - name: id
+          - name: tenant
+          - name: day_attendance_id
+          - name: attendance_code_id
+          - name: student_party_id
+          - name: date
+          - name: updating_user
+          - name: sys_period
+
+  - name: calendar
+    tables:
+      - name: calendar
+        columns:
+          - name: calendar_id
+          - name: academic_namespace_id
+          - name: tenant
+          - name: start_date
+          - name: end_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: calendar_event_link
+        columns:
+          - name: tenant
+          - name: calendar_id
+          - name: event_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: event
+        columns:
+          - name: event_id
+          - name: tenant
+          - name: event_type
+          - name: updating_user
+          - name: sys_period
+          - name: description
+
+      - name: event_attendee
+        columns:
+          - name: tenant
+          - name: event_id
+          - name: attendee_type
+          - name: attendee_party_id
+          - name: start_date
+          - name: end_date
+          - name: recurrence_rule
+          - name: updating_user
+          - name: sys_period
+
+      - name: event_attendee_exclusion
+        columns:
+          - name: tenant
+          - name: event_id
+          - name: excluded_attendee_party_id
+          - name: start_date
+          - name: end_date
+          - name: recurrence_rule
+          - name: updating_user
+          - name: sys_period
+
+      - name: event_schedule
+        columns:
+          - name: event_id
+          - name: tenant
+          - name: start_date
+          - name: end_date
+          - name: start_time
+          - name: end_time
+          - name: recurrence_rule
+          - name: updating_user
+          - name: sys_period
+          - name: schedule_id
+
+      - name: event_schedule_room
+        columns:
+          - name: event_schedule_id
+          - name: room_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: event_subject_group
+        columns:
+          - name: event_id
+          - name: tenant
+          - name: subject_group_id
+          - name: lesson_id
+          - name: updating_user
+          - name: sys_period
+
+
+  - name: catalogue
+    tables:
+      - name: colour
+        columns:
+          - name: colour_id
+          - name: internal_description
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: programme
+        columns:
+          - name: programme_id
+          - name: name_text_id
+          - name: short_name_text_id
+          - name: national_code
+          - name: region
+          - name: description_text_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: programme_stage
+        columns:
+          - name: programme_stage_id
+          - name: programme_id
+          - name: name_text_id
+          - name: short_name_text_id
+          - name: national_code
+          - name: programme_order
+          - name: region
+          - name: description_text_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: programme_stage_year_ire
+        columns:
+          - name: programme_stage_id
+          - name: name_text_id
+          - name: year
+          - name: updating_user
+          - name: sys_period
+          - name: id
+
+      - name: subject
+        columns:
+          - name: subject_id
+          - name: name_text_id
+          - name: short_code_text_id
+          - name: tenant
+          - name: subject_source
+          - name: region
+          - name: description_text_id
+          - name: national_code
+          - name: updating_user
+          - name: sys_period
+          - name: colour
+          - name: icon
+
+      - name: subject_ire_pp
+        columns:
+          - name: subject_id
+          - name: examinable
+          - name: has_higher_level
+          - name: has_ordinary_level
+          - name: has_foundation_level
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_overrides
+        columns:
+          - name: subject_id
+          - name: name_text_id
+          - name: short_code_text_id
+          - name: active
+          - name: in_use_historically
+          - name: icon
+          - name: colour
+          - name: tenant
+          - name: description_text_id
+          - name: updating_user
+          - name: sys_period
+
+
+  - name: communications
+    tables:
+      - name: attachment
+        columns:
+          - name: id
+          - name: tenant
+          - name: mail_id
+          - name: person_party_id
+          - name: url
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: label
+        columns:
+          - name: id
+          - name: tenant
+          - name: person_party_id
+          - name: name
+          - name: colour
+          - name: custom
+          - name: updating_user
+          - name: sys_period
+
+      - name: mail
+        columns:
+          - name: id
+          - name: tenant
+          - name: sender_party_id
+          - name: subject
+          - name: body
+          - name: sent_on
+          - name: can_reply
+          - name: updating_user
+          - name: sys_period
+          - name: latest_message
+
+      - name: recipient
+        columns:
+          - name: id
+          - name: tenant
+          - name: mail_id
+          - name: recipient_party_id
+          - name: recipient_type
+          - name: updating_user
+          - name: sys_period
+
+      - name: thread
+        columns:
+          - name: id
+          - name: tenant
+          - name: start_mail_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: thread_message
+        columns:
+          - name: id
+          - name: tenant
+          - name: thread_id
+          - name: mail_id
+          - name: person_party_id
+          - name: read_on
+          - name: starred
+          - name: updating_user
+          - name: sys_period
+
+      - name: thread_message_label
+        columns:
+          - name: id
+          - name: tenant
+          - name: thread_message_id
+          - name: label_id
+          - name: updating_user
+          - name: sys_period
+
+
+  - name: core
+    tables:
+      - name: academic_namespace
+        columns:
+          - name: academic_namespace_id
+          - name: academic_namespace_type
+          - name: name
+          - name: description
+          - name: year
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: address
+        columns:
+          - name: id
+          - name: tenant
+          - name: line1
+          - name: line2
+          - name: line3
+          - name: city
+          - name: country
+          - name: post_code
+          - name: updating_user
+          - name: sys_period
+
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: email
+        columns:
+          - name: email_id
+          - name: tenant
+          - name: email
+          - name: sys_period
+
+      - name: external_system_id
+        columns:
+          - name: party_id
+          - name: external_system_id
+          - name: external_system_provider
+          - name: external_system_entity_type
+          - name: misc
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+          - name: external_system_id_array
+          - name: external_system_id_array_int
+
+      - name: general_group
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: general_group_type
+          - name: updating_user
+          - name: sys_period
+
+      - name: general_group_contact_members
+        columns:
+          - name: general_group_party_id
+          - name: student_contact_id
+          - name: academic_namespace_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: general_group_staff_members
+        columns:
+          - name: general_group_party_id
+          - name: staff_id
+          - name: academic_namespace_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: general_group_student_members
+        columns:
+          - name: general_group_party_id
+          - name: student_id
+          - name: academic_namespace_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: party
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+          - name: avatar_url
+
+      - name: party_group
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: name
+          - name: updating_user
+          - name: sys_period
+
+      - name: party_in_academic_namespace
+        columns:
+          - name: academic_namespace_id
+          - name: party_id
+          - name: name_override
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: party_person
+        columns:
+          - name: party_id
+          - name: personal_information_id
+          - name: user_profile_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+          - name: party_person_type
+
+      - name: personal_information
+        columns:
+          - name: personal_information_id
+          - name: tenant
+          - name: first_name
+          - name: last_name
+          - name: middle_name
+          - name: gender
+          - name: date_of_birth
+          - name: updating_user
+          - name: sys_period
+
+      - name: personal_information__ire
+        columns:
+          - name: personal_information_id
+          - name: tenant
+          - name: pps_number
+          - name: religion
+          - name: country_of_birth
+          - name: updating_user
+          - name: sys_period
+
+      - name: phone_number
+        columns:
+          - name: phone_number_id
+          - name: tenant
+          - name: number
+          - name: area_code
+          - name: country_code
+          - name: updating_user
+          - name: sys_period
+
+      - name: programme_enrollment_student_members
+        columns:
+          - name: programme_stage_enrollment_party_id
+          - name: student_party_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: programme_stage_enrollment
+        columns:
+          - name: programme_stage_enrollment_party_id
+          - name: academic_namespace_id
+          - name: programme_id
+          - name: programme_stage_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: room
+        columns:
+          - name: room_id
+          - name: name
+          - name: capacity
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: staff
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: no_longer_staff_member
+          - name: is_teacher
+          - name: payroll_number
+          - name: include_in_timetable
+          - name: employment_capacity
+          - name: display_code
+          - name: car_registration_number
+          - name: updating_user
+          - name: sys_period
+
+      - name: staff_group
+        columns:
+          - name: staff_party_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: staff_group_members
+        columns:
+          - name: staff_group_party_id
+          - name: staff_party_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: student
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_contact
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_contact_relationship
+        columns:
+          - name: student_party_id
+          - name: student_contact_party_id
+          - name: primary_contact
+          - name: allowed_to_contact
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_ire_pp
+        columns:
+          - name: student_id
+          - name: tenant
+          - name: medical_card
+          - name: traveller_heritage
+          - name: language_support_applicant
+          - name: border_indicator
+          - name: exam_number
+          - name: mothers_maiden_name
+          - name: previous_school_roll_number
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_group
+        columns:
+          - name: party_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_group_ire_pp
+        columns:
+          - name: subject_group_id
+          - name: academic_namespace_id
+          - name: level
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_group_staff_members
+        columns:
+          - name: subject_group_id
+          - name: staff_party_id
+          - name: tenant
+          - name: academic_namespace_id
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_group_student_members
+        columns:
+          - name: subject_group_id
+          - name: student_party_id
+          - name: tenant
+          - name: academic_namespace_id
+          - name: from_date
+          - name: to_date
+          - name: updating_user
+          - name: sys_period
+
+      - name: subject_group_subject
+        columns:
+          - name: subject_group_id
+          - name: subject_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: teacher
+        columns:
+          - name: staff_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: teacher__ire_pp
+        columns:
+          - name: teacher_id
+          - name: tenant
+          - name: teaching_council_number
+          - name: teaching_post
+          - name: updating_user
+          - name: sys_period
+
+      - name: tenant_settings
+        columns:
+          - name: tenant
+          - name: active_academic_namespace
+          - name: updating_user
+          - name: sys_period
+
+
+  - name: users
+    tables:
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: global_user
+        columns:
+          - name: id
+          - name: updating_user
+          - name: email
+          - name: first_name
+          - name: last_name
+          - name: default_profile_id
+          - name: sys_period
+
+      - name: language
+        columns:
+          - name: id
+          - name: name
+          - name: locale
+          - name: updating_user
+          - name: sys_period
+
+      - name: permission
+        columns:
+          - name: id
+          - name: updating_user
+          - name: tyro_admin_only
+          - name: name_text_id
+          - name: description_text_id
+          - name: sys_period
+
+      - name: region
+        columns:
+          - name: region
+          - name: name
+          - name: updating_user
+          - name: sys_period
+
+      - name: security_role
+        columns:
+          - name: id
+          - name: unique_name
+          - name: name_text_id
+          - name: description_text_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: security_role_includes_permission
+        columns:
+          - name: security_role_id
+          - name: permission
+          - name: permission_type
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: security_role_to_user_profile
+        columns:
+          - name: security_role_id
+          - name: user_profile_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+      - name: tenant
+        columns:
+          - name: tenant
+          - name: updating_user
+          - name: region
+          - name: name
+          - name: img_url
+          - name: sys_period
+          - name: timezone
+
+      - name: text_content
+        columns:
+          - name: id
+          - name: updating_user
+          - name: sys_period
+
+      - name: text_translation
+        columns:
+          - name: text_content_id
+          - name: language_id
+          - name: translation
+          - name: updating_user
+          - name: sys_period
+
+      - name: user_profile
+        columns:
+          - name: id
+          - name: tenant
+          - name: party_person_id
+          - name: user_profile_type_id
+          - name: global_user_id
+          - name: updating_user
+          - name: nickname
+          - name: is_active
+          - name: sys_period
+
+      - name: user_profile_type
+        columns:
+          - name: id
+          - name: unique_name
+          - name: tenant
+          - name: profile_type
+          - name: name_text_id
+          - name: description_text_id
+          - name: is_active
+          - name: updating_user
+          - name: sys_period
+
+      - name: user_profile_type_default_security_roles
+        columns:
+          - name: security_role_id
+          - name: user_profile_type_id
+          - name: tenant
+          - name: updating_user
+          - name: sys_period
+
+  - name: wellbeing
+    tables:
+      - name: databasechangelog
+        columns:
+          - name: id
+          - name: author
+          - name: filename
+          - name: dateexecuted
+          - name: orderexecuted
+          - name: exectype
+          - name: md5sum
+          - name: description
+          - name: comments
+          - name: tag
+          - name: liquibase
+          - name: contexts
+          - name: labels
+          - name: deployment_id
+
+      - name: databasechangeloglock
+        columns:
+          - name: id
+          - name: locked
+          - name: lockgranted
+          - name: lockedby
+
+      - name: student_support_file
+        columns:
+          - name: id
+          - name: tenant
+          - name: name
+          - name: student_party_id
+          - name: creator_party_id
+          - name: date_opened
+          - name: date_closed
+          - name: guardians_consulted
+          - name: guardians_consulted_date
+          - name: guardians_consulted_comments
+          - name: previous_school_info
+          - name: previous_school_info_date
+          - name: previous_school_info_comments
+          - name: hearing
+          - name: hearing_date
+          - name: hearing_comments
+          - name: vision
+          - name: vision_date
+          - name: vision_comments
+          - name: medical
+          - name: medical_date
+          - name: medical_comments
+          - name: basic_needs_checklist
+          - name: basic_needs_checklist_date
+          - name: basic_needs_checklist_comments
+          - name: learning_screening
+          - name: learning_screening_date
+          - name: learning_screening_comments
+          - name: observation_of_learning
+          - name: observation_of_learning_date
+          - name: observation_of_learning_comments
+          - name: observation_of_behaviour
+          - name: observation_of_behaviour_date
+          - name: observation_of_behaviour_comments
+          - name: pupil_interview
+          - name: pupil_interview_date
+          - name: pupil_interview_comments
+          - name: classroom_work_differentiated
+          - name: classroom_work_differentiated_date
+          - name: classroom_work_differentiated_comments
+          - name: learning_environment_adapted
+          - name: learning_environment_adapted_date
+          - name: learning_environment_adapted_comments
+          - name: school_environment_adapted
+          - name: school_environment_adapted_date
+          - name: school_environment_adapted_comments
+          - name: outside_professionals
+          - name: outside_professionals_date
+          - name: outside_professionals_comments
+          - name: staff_advice
+          - name: staff_advice_date
+          - name: staff_advice_comments
+          - name: other_interventions
+          - name: other_interventions_date
+          - name: other_interventions_comments
+          - name: actions_needed
+          - name: actions_needed_date
+          - name: actions_needed_comments
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_file_subject
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_file_id
+          - name: subject_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_plan
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_file_id
+          - name: plan_type
+          - name: start_date
+          - name: end_date
+          - name: strengths_and_interests
+          - name: priority_concerns
+          - name: possible_concerns
+          - name: strategies
+          - name: resources_needed
+          - name: guardians_signature_obtained
+          - name: staff_signature_obtained
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_plan_review
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_plan_id
+          - name: date
+          - name: successful_areas
+          - name: original_concerns_changes
+          - name: students_needs_changes
+          - name: recommended_actions
+          - name: students_comments
+          - name: guardians_comments
+          - name: guardians_signature_obtained
+          - name: staff_signature_obtained
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_plan_review_attendee
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_plan_review_id
+          - name: person_party_id
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_plan_staff
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_plan_id
+          - name: staff_party_id
+          - name: lead
+          - name: updating_user
+          - name: sys_period
+
+      - name: student_support_plan_target
+        columns:
+          - name: id
+          - name: tenant
+          - name: student_support_plan_id
+          - name: target
+          - name: status
+          - name: comments
+          - name: updating_user
+          - name: sys_period
+

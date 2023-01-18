@@ -1,0 +1,47 @@
+
+version: 2
+
+
+metrics:
+  - name: subject_groups
+    label: Subject Groups
+    model: ref('subject_groups')
+    description: "All subject groups in system"
+
+    calculation_method: count_distinct
+    expression: party_id
+
+    timestamp: start_date
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - plan
+      - country
+
+    window:
+      count: 14
+      period: day
+
+    filters:
+      - field: is_paying
+        operator: 'is'
+        value: 'true'
+      - field: lifetime_value
+        operator: '>='
+        value: '100'
+      - field: company_name
+        operator: '!='
+        value: "'Acme, Inc'"
+      - field: signup_date
+        operator: '>='
+        value: "'2020-01-01'"
+
+    # general properties
+    config:
+      enabled: true | false
+      treat_null_values_as_zero: true | false
+
+    meta: {team: Finance}
+
+
+

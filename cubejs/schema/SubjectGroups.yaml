@@ -1,0 +1,28 @@
+cubes:
+  - name: SubjectGroups
+    sql: SELECT *, translate_text(name_text_id, 1) as subject_name FROM analysis.subject_groups
+      # preAggregations:
+      # Pre-Aggregations definitions go here
+      # Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+    joins: []
+    measures:
+      - name: count
+        type: count
+        drillMembers: [name, updatedTs, startDate, endDate]
+    dimensions:
+      - name: name
+        sql: name
+        type: string
+      - name: subject_name
+        sql: subject_name
+        type: string
+      - name: updatedTs
+        sql: updated_ts
+        type: time
+      - name: startDate
+        sql: start_date
+        type: time
+      - name: endDate
+        sql: end_date
+        type: time
+    dataSource: default
